@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# KiddieGPT
+
+**KiddieGPT** is a delightful AI-powered storytelling web application designed especially for kids. Using advanced AI models like Replicate API and Gemini AI, KiddieGPT generates engaging, customized stories that spark imagination and learning. The app features an intuitive UI built with Next.js and integrates PayPal for seamless story credit purchases.
+
+---
+
+## Table of Contents
+
+- [Features](#features)  
+- [Demo](#demo)  
+- [Tech Stack](#tech-stack)  
+- [Getting Started](#getting-started)  
+- [Installation](#installation)  
+- [Usage](#usage)  
+- [Payment Integration](#payment-integration)  
+- [Credits System](#credits-system)  
+- [API Integrations](#api-integrations)  
+- [Folder Structure](#folder-structure)  
+- [Contributing](#contributing)  
+- [License](#license)  
+- [Contact](#contact)
+
+---
+
+## Features
+
+- **AI Story Generation:** Generate personalized children’s stories using GPT and Gemini AI models via Replicate API.  
+- **User-friendly Interface:** Clean, colorful UI built with Next.js and React, perfect for kids and parents.  
+- **Credits System:** Users purchase credits to unlock stories. Credits management integrated with database.  
+- **Payment Gateway:** PayPal integration for secure, easy purchases of story credits.  
+- **Custom Story Options:** Choose story themes, length, and more to tailor the experience.  
+- **Responsive Design:** Works flawlessly on desktop, tablets, and mobile devices.  
+- **History & Favorites:** Save favorite stories and access story history anytime.  
+
+---
+
+## Demo
+
+Add your live demo link here (if deployed)  
+`https://your-kiddiegpt-demo.vercel.app`
+
+---
+
+## Tech Stack
+
+- **Frontend:** Next.js (React) with Tailwind CSS for styling  
+- **Backend:** Next.js API Routes  
+- **AI APIs:** Replicate API, Gemini AI models for story generation  
+- **Database:** PostgreSQL with Drizzle ORM  
+- **Authentication:** Clerk for user management  
+- **Payment:** PayPal Smart Buttons integration  
+- **State Management:** React Context API  
+
+---
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to run KiddieGPT locally:
+
+### Prerequisites
+
+- Node.js (v18+)  
+- PostgreSQL database  
+- PayPal Developer account (Sandbox & Live credentials)  
+- Replicate API key  
+- Gemini AI API access (if applicable)  
+- Clerk account for authentication  
+
+---
+
+## Installation
+
+1. **Clone the repo:**
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+git clone https://github.com/yourusername/kiddiegpt.git
+cd kiddiegpt
