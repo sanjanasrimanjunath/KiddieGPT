@@ -6,6 +6,7 @@ import { UserDetailContext } from '@/context/UserDetailContext'
 import { useUser } from '@clerk/nextjs'
 import { eq } from 'drizzle-orm'
 import React, { useEffect, useState } from 'react'
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 const Provider = ({ children }: { children: React.ReactNode }) => {
 
@@ -46,7 +47,9 @@ const Provider = ({ children }: { children: React.ReactNode }) => {
     return (
         <div>
             <UserDetailContext.Provider value={{ userDetail, setUserDetail }}>
-                {children}
+                <PayPalScriptProvider options={{ clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID! }}>
+                    {children}
+                </PayPalScriptProvider>
             </UserDetailContext.Provider>
         </div>
     )

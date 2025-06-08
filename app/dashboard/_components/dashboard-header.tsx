@@ -1,7 +1,9 @@
 "use client"
 
+import { Button } from '@/components/ui/button'
 import { UserDetailContext } from '@/context/UserDetailContext'
 import Image from 'next/image'
+import Link from 'next/link'
 import React, { useContext } from 'react'
 
 const DashboardHeader = () => {
@@ -16,6 +18,14 @@ const DashboardHeader = () => {
       <div className="flex items-center gap-3">
         <Image src="/coin.png" alt="coin" width={40} height={40} />
         <span className="text-xl md:text-2xl font-medium">{userDetail?.credits} Credits Left</span>
+        <Link href={"/buy-credits"}>
+          <Button
+            className="bg-white cursor-pointer text-purple-900 font-semibold px-4 py-2 rounded-md hover:bg-gray-300 transition"
+          >
+            Buy more credits
+          </Button>
+
+        </Link>
       </div>
     </div>
   )
