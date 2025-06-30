@@ -38,7 +38,7 @@
 ## Demo
 
 Add your live demo link here (if deployed)  
-`https://your-kiddiegpt-demo.vercel.app`
+`https://kiddie-gpt.vercel.app/`
 
 ---
 
