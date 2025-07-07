@@ -74,3 +74,32 @@ Follow these steps to run KiddieGPT locally:
 ```bash
 git clone https://github.com/yourusername/kiddiegpt.git
 cd kiddiegpt
+```
+
+2. **Install Dependencies
+
+```bash
+npm install
+```
+
+3. **Configure environment variables:
+
+```bash
+DATABASE_URL=your_postgresql_url
+REPLICATE_API_TOKEN=your_replicate_api_key
+GEMINI_API_KEY=your_gemini_api_key
+CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+NEXT_PUBLIC_CLERK_FRONTEND_API=your_clerk_frontend_api
+PAYPAL_CLIENT_ID=your_paypal_client_id
+PAYPAL_CLIENT_SECRET=your_paypal_client_secret
+```
+
+4. **Run the development server:
+   
+```bash
+npm run dev
+```
+Visit ```http://localhost:3000``` to view the app locally.
+
+
