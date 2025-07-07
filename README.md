@@ -76,13 +76,13 @@ git clone https://github.com/yourusername/kiddiegpt.git
 cd kiddiegpt
 ```
 
-2. **Install Dependencies
+2. Install Dependencies
 
 ```bash
 npm install
 ```
 
-3. **Configure environment variables:
+3. Configure environment variables:
 
 ```bash
 DATABASE_URL=your_postgresql_url
@@ -95,7 +95,7 @@ PAYPAL_CLIENT_ID=your_paypal_client_id
 PAYPAL_CLIENT_SECRET=your_paypal_client_secret
 ```
 
-4. **Run the development server:
+4. Run the development server:
    
 ```bash
 npm run dev
