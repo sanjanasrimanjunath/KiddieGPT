@@ -11,15 +11,7 @@
 - [Demo](#demo)  
 - [Tech Stack](#tech-stack)  
 - [Getting Started](#getting-started)  
-- [Installation](#installation)  
-- [Usage](#usage)  
-- [Payment Integration](#payment-integration)  
-- [Credits System](#credits-system)  
-- [API Integrations](#api-integrations)  
-- [Folder Structure](#folder-structure)  
-- [Contributing](#contributing)  
-- [License](#license)  
-- [Contact](#contact)
+- [Installation](#installation)   
 
 ---
 
