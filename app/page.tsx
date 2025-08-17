@@ -5,7 +5,6 @@ import Benefits from "./_components/Benefits";
 import Testimonials from "./_components/Testimonials";
 import CTA from "./_components/CTA";
 import Footer from "./_components/Footer";
-import HowItWorks from "./_components/HowItWorks";
 
 
 export default function Home() {
@@ -29,8 +28,6 @@ export default function Home() {
       {/*  Call to Action */}
       <CTA />
 
-      {/* How it Works */}
-      <HowItWorks />
 
       <Footer/>
     </main>
