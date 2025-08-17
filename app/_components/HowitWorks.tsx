@@ -23,7 +23,7 @@ const steps = [
 
 export default function HowItWorksSection() {
   return (
-    <section className="relative py-20 bg-gradient-to-b from-pink-50 via-purple-50 to-pink-100 overflow-hidden">
+    <header className="fixed w-full top-0 z-50 bg-gradient-to-br from-[#EEDFFF] via-[#E4CAFF] to-[#DBB5FF] shadow-md">
       {/* Decorative WOW blur orbs */}
       <motion.div
         animate={{ scale: [1, 1.2, 1] }}
@@ -67,6 +67,6 @@ export default function HowItWorksSection() {
           ))}
         </div>
       </div>
-    </section>
+    </header>
   );
 }
