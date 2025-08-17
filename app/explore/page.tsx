@@ -2,9 +2,7 @@
 
 import * as React from "react";
 import { useEffect, useState } from "react";
-// import { db } from "@/config/db";
-// import { StoryData } from "@/config/schema";
-// import { desc } from "drizzle-orm";
+// Database imports removed since we're using API
 import StoryItemCard from "@/app/dashboard/_components/story-item-card";
 import CustomLoader from "@/app/create-story/_components/custom-loader";
 
@@ -26,11 +24,9 @@ type StoryItemType = {
 };
 
 
-// TODO: Fetch real stories from the database and generate ageGroups and storyTypes dynamically
-const ageGroups: string[] = ["All"];
-const storyTypes: string[] = ["All"];
-
 const ExploreStories: React.FC = () => {
+    const [ageGroups, setAgeGroups] = useState<string[]>(["All"]);
+    const [storyTypes, setStoryTypes] = useState<string[]>(["All"]);
     const [storyList, setStoryList] = useState<StoryItemType[]>([]);
     const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState("");
@@ -38,7 +34,37 @@ const ExploreStories: React.FC = () => {
     const [storyType, setStoryType] = useState("All");
     const [likes, setLikes] = useState<{ [id: number]: boolean }>({});
 
-    // TODO: Fetch stories from the database and setStoryList with real data
+    useEffect(() => {
+        const fetchStories = async () => {
+            setLoading(true);
+            try {
+                const response = await fetch('/api/stories');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch stories');
+                }
+                const stories = await response.json();
+                setStoryList(stories);
+                
+                // Update age groups and story types from the data
+                const uniqueAgeGroups = new Set(["All"]);
+                const uniqueStoryTypes = new Set(["All"]);
+                
+                stories.forEach((story: any) => {
+                    if (story.ageGroup) uniqueAgeGroups.add(story.ageGroup);
+                    if (story.storyType) uniqueStoryTypes.add(story.storyType);
+                });
+                
+                setAgeGroups(Array.from(uniqueAgeGroups) as string[]);
+                setStoryTypes(Array.from(uniqueStoryTypes) as string[]);
+            } catch (error) {
+                console.error("Error fetching stories:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        
+        fetchStories();
+    }, []);
 
     const filtered = storyList.filter(story => {
         const matchesSearch =
