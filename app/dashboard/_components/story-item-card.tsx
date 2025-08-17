@@ -63,7 +63,7 @@ const StoryItemCard = ({ story }: StoryItemType) => {
         <div className="flex-1" />
         <button
           onClick={e => { e.stopPropagation(); router.push(`/view-story/${story?.storyId}`); }}
-          className="mt-2 px-4 py-2 bg-purple-700 text-white rounded-lg shadow hover:bg-purple-900 transition text-sm font-semibold w-full"
+          className="mt-2 px-4 py-2 cursor-pointer bg-purple-700 text-white rounded-lg shadow hover:bg-purple-900 transition text-sm font-semibold w-full"
         >
           View Story
         </button>

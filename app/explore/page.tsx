@@ -83,7 +83,7 @@ const ExploreStories: React.FC = () => {
     });
 
     return (
-        <div className="min-h-screen px-6 py-10 mt-20">
+        <div className="w-full mt-6 bg-gradient-to-r from-purple-100 via-purple-200 to-purple-300 px-6 py-16 md:py-20">
             <h1 className="text-3xl md:text-4xl text-purple-800 font-bold mb-8 text-center">
                 Explore Stories from the Community 🌍
             </h1>
@@ -93,7 +93,7 @@ const ExploreStories: React.FC = () => {
                     placeholder="Search by title or author..."
                     value={search}
                     onChange={e => setSearch(e.target.value)}
-                    className="px-4 py-2 rounded-lg border border-purple-700 border-2 focus:outline-none focus:ring-2 focus:ring-purple-400 w-full md:w-72"
+                    className="px-4 py-2 rounded-lg border-2 border-purple-700  focus:outline-none focus:ring-2 focus:ring-purple-400 w-full md:w-72"
                 />
                 <div className="flex gap-4">
       <Select value={ageGroup} onValueChange={setAgeGroup}>
