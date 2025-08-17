@@ -5,7 +5,7 @@ import Benefits from "./_components/Benefits";
 import Testimonials from "./_components/Testimonials";
 import CTA from "./_components/CTA";
 import Footer from "./_components/Footer";
-import HowItWorks from "./_components/HowitWorks";
+import HowItWorks from "./_components/HowItWorks";
 
 
 export default function Home() {
@@ -36,3 +36,4 @@ export default function Home() {
     </main>
   );
 }
+
