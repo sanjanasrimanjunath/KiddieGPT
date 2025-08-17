@@ -27,7 +27,11 @@ export default function SignInPage() {
 
 
                     <div className="rounded-xl border border-purple-200 bg-purple-50/30 shadow-md p-6">
-                        <SignUp appearance={{
+                        <SignUp
+                        path="/sign-up"
+              routing="path"
+              signInUrl="/sign-in"
+               appearance={{
                             elements: {
                                 formButtonPrimary: "bg-purple-600 hover:bg-purple-700 focus:ring-purple-500",
                                 card: "shadow-none bg-transparent",
