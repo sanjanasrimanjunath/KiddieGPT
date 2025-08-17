@@ -33,8 +33,8 @@ const Header = () => {
       className={cn(
         "w-full fixed top-0 z-50 transition-all duration-300 border-b overflow-hidden",
         scrolled
-          ? "bg-gradient-to-r from-pink-50 via-purple-50 to-pink-50 shadow-md border-purple-200/70 backdrop-blur-md"
-          : "bg-gradient-to-r from-purple-100 via-pink-100 to-purple-100 border-purple-200/50"
+          ? "bg-gradient-to-r from-[#EEDFFF] via-[#E4CAFF] to-[#DBB5FF] shadow-md border-purple-200/70 backdrop-blur-md"
+          : "bg-gradient-to-r from-[#EEDFFF] via-[#E4CAFF] to-[#DBB5FF] border-purple-200/50"
       )}
     >
       {/* background glow blobs */}
@@ -126,7 +126,7 @@ const Header = () => {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="bg-gradient-to-r from-purple-50 via-pink-50 to-purple-50 px-6 py-4 md:hidden flex flex-col gap-1 border-t border-purple-100 shadow-lg relative"
+            className="bg-gradient-to-r from-[#EEDFFF] via-[#E4CAFF] to-[#DBB5FF] px-6 py-4 md:hidden flex flex-col gap-1 border-t border-purple-100 shadow-lg relative"
           >
             {menuList.map((item) => (
               <motion.div

@@ -8,7 +8,7 @@ import Link from 'next/link'
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-r from-purple-100 via-pink-100 to-purple-200 px-4 sm:px-6 lg:px-8 py-20 md:py-28 min-h-screen">
+    <section className="relative min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-[#EEDFFF] via-[#E4CAFF] to-[#DBB5FF] text-white overflow-hidden">
       {/* Background glowing orbs */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-24 left-16 w-36 h-36 bg-purple-300/20 rounded-full blur-3xl" />

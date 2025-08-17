@@ -20,8 +20,7 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="relative py-20 bg-gradient-to-b from-pink-50 to-white overflow-hidden">
-      {/* Purple-Pink Blur Orbs */}
+    <section className="py-20 bg-gradient-to-br from-[#EEDFFF] via-[#E4CAFF] to-[#DBB5FF] text-gray-900">
       <div className="absolute -top-24 -left-24 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" />
 
