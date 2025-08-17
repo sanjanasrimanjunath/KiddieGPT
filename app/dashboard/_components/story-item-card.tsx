@@ -32,7 +32,7 @@ const StoryItemCard = ({ story }: StoryItemType) => {
   const router = useRouter()
 
   return (
-    <Card
+     <Card
       onClick={() => router.push(`/view-story/${story?.storyId}`)}
       className="w-full max-w-sm h-[540px] flex flex-col gap-1 rounded-xl overflow-hidden shadow-xl border border-purple-300 bg-gradient-to-r from-purple-200 to-purple-300 hover:shadow-purple-400 transition duration-300 group cursor-pointer">
       <div className="overflow-hidden flex-shrink-0">

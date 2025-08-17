@@ -1,11 +1,11 @@
-// app/page.tsx
 import Header from "./_components/header";
 import Hero from "./_components/hero";
 import Features from "./_components/FeaturesSection";
 import Benefits from "./_components/Benefits";
-import Testimonials from "./_components/TestimonialsSection";
+import Testimonials from "./_components/Testimonials";
 import CTA from "./_components/CTA";
-import HowItWorks from "./_components/HowItWorks";
+import HowItWorks from "./_components/HowitWorks";
+import Footer from "./_components/Footer";
 
 
 export default function Home() {
@@ -31,6 +31,8 @@ export default function Home() {
 
       {/* How it Works */}
       <HowItWorks />
+
+      <Footer/>
     </main>
   );
 }

@@ -2,6 +2,13 @@
 
 import * as React from "react";
 import { useEffect, useState } from "react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 // Database imports removed since we're using API
 import StoryItemCard from "@/app/dashboard/_components/story-item-card";
 import CustomLoader from "@/app/create-story/_components/custom-loader";
@@ -86,26 +93,39 @@ const ExploreStories: React.FC = () => {
                     placeholder="Search by title or author..."
                     value={search}
                     onChange={e => setSearch(e.target.value)}
-                    className="px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-400 w-full md:w-72"
+                    className="px-4 py-2 rounded-lg border border-purple-700 border-2 focus:outline-none focus:ring-2 focus:ring-purple-400 w-full md:w-72"
                 />
-                <select
-                    value={ageGroup}
-                    onChange={e => setAgeGroup(e.target.value)}
-                    className="px-3 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-400"
-                >
-                    {ageGroups.map(g => <option key={g} value={g}>{g}</option>)}
-                </select>
-                <select
-                    value={storyType}
-                    onChange={e => setStoryType(e.target.value)}
-                    className="px-3 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-400"
-                >
-                    {storyTypes.map(t => <option key={t} value={t}>{t}</option>)}
-                </select>
+                <div className="flex gap-4">
+      <Select value={ageGroup} onValueChange={setAgeGroup}>
+        <SelectTrigger className="w-[180px] rounded-xl border-purple-700 border-2 focus:ring-2 focus:ring-purple-400">
+          <SelectValue placeholder="Select age group" />
+        </SelectTrigger>
+        <SelectContent>
+          {ageGroups.map(g => (
+            <SelectItem key={g} value={g}>
+              {g}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+
+      {/* Story Type Select */}
+      <Select value={storyType} onValueChange={setStoryType}>
+        <SelectTrigger className="w-[180px] rounded-xl border-purple-700 border-2 focus:ring-2 focus:ring-purple-400">
+          <SelectValue placeholder="Select story type" />
+        </SelectTrigger>
+        <SelectContent>
+          {storyTypes.map(t => (
+            <SelectItem key={t} value={t}>
+              {t}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
             </div>
             {filtered.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-20">
-                    <img src="/empty-state.svg" alt="No stories" className="w-40 h-40 mb-4 opacity-80" />
                     <p className="text-xl text-purple-700 font-semibold">No stories found. Try a different search or filter!</p>
                 </div>
             ) : (
