@@ -1,9 +1,36 @@
+// app/page.tsx
+import Header from "./_components/header";
 import Hero from "./_components/hero";
+import Features from "./_components/FeaturesSection";
+import Benefits from "./_components/Benefits";
+import Testimonials from "./_components/TestimonialsSection";
+import CTA from "./_components/CTA";
+import HowItWorks from "./_components/HowItWorks";
+
 
 export default function Home() {
   return (
-    <div>
-      <Hero/>
-    </div>
+    <main className="min-h-screen bg-gradient-to-b from-pink-50 via-purple-50 to-pink-100 dark:from-purple-950 dark:via-purple-900 dark:to-pink-950">
+      {/*  Header */}
+      <Header />
+
+      {/*  Hero Section */}
+      <Hero />
+
+      {/*  Features */}
+      <Features />
+
+      {/* Benefits */}
+      <Benefits />
+
+      {/* Testimonials */}
+      <Testimonials />
+
+      {/*  Call to Action */}
+      <CTA />
+
+      {/* How it Works */}
+      <HowItWorks />
+    </main>
   );
 }
