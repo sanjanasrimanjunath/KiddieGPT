@@ -39,7 +39,7 @@ export default function FeaturesSection() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent drop-shadow-lg"
+          className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-purple-700 to-pink-600 bg-clip-text text-transparent drop-shadow-lg"
         >
           Features
         </motion.h2>
