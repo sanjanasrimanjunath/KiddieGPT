@@ -11,29 +11,33 @@ export default function Benefits() {
   ];
 
   return (
-    <section className="py-16 bg-white dark:bg-gray-900">
-      <div className="max-w-6xl mx-auto px-4 text-center">
+    <section className="relative py-20 overflow-hidden bg-gradient-to-br from-pink-100 via-purple-100 to-purple-200 dark:from-purple-900 dark:via-purple-800 dark:to-pink-900">
+      {/* 🌸 Blurred Orbs */}
+      <div className="absolute top-0 left-1/4 w-72 h-72 bg-pink-400/30 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-400/30 rounded-full blur-3xl animate-pulse"></div>
+
+      <div className="relative max-w-6xl mx-auto px-6 text-center">
         <motion.h2
-          className="text-3xl font-bold text-gray-900 dark:text-white mb-8"
+          className="text-4xl font-extrabold text-purple-900 dark:text-pink-200 mb-14"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           Benefits of Our Platform
         </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
-              className="p-6 rounded-2xl shadow-lg bg-gray-50 dark:bg-gray-800"
+              className="relative p-8 rounded-2xl shadow-lg bg-white/70 dark:bg-purple-800/70 backdrop-blur-lg border border-purple-200 dark:border-pink-700 hover:scale-105 transform transition duration-300"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
+              transition={{ delay: index * 0.15, duration: 0.6 }}
             >
-              <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
+              <h3 className="text-2xl font-semibold text-purple-800 dark:text-pink-200">
                 {benefit.title}
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 mt-2">
+              <p className="text-gray-700 dark:text-pink-100 mt-3">
                 {benefit.description}
               </p>
             </motion.div>

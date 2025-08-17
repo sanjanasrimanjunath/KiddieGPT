@@ -8,34 +8,38 @@ const features = [
   {
     icon: Sparkles,
     title: "Personalized Stories",
-    description: "Every tale adapts to your child's name, age, and preferences."
+    description: "Every tale adapts to your child's name, age, and preferences.",
   },
   {
     icon: Palette,
     title: "Custom Themes",
-    description: "Choose magical worlds, futuristic cities, or cozy bedtime vibes."
+    description: "Choose magical worlds, futuristic cities, or cozy bedtime vibes.",
   },
   {
     icon: Book,
     title: "AI Customization",
-    description: "Change plotlines, characters, or illustrations instantly."
+    description: "Change plotlines, characters, or illustrations instantly.",
   },
   {
     icon: Share2,
     title: "Export & Share",
-    description: "Download as PDF or share directly with friends and family."
-  }
+    description: "Download as PDF or share directly with friends and family.",
+  },
 ];
 
 export default function FeaturesSection() {
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-blue-50">
-      <div className="container mx-auto px-6">
+    <section className="relative py-20 bg-gradient-to-br from-purple-600 via-pink-600 to-purple-700 overflow-hidden">
+      {/* WOW Glow orbs */}
+      <div className="absolute -top-20 -left-20 w-72 h-72 bg-pink-400/40 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-purple-500/40 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
+
+      <div className="relative container mx-auto px-6">
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold text-center mb-12"
+          className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent drop-shadow-lg"
         >
           Features
         </motion.h2>
@@ -48,11 +52,13 @@ export default function FeaturesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              <Card className="rounded-2xl shadow-lg hover:shadow-xl transition">
+              <Card className="rounded-2xl shadow-lg bg-white/90 backdrop-blur-sm hover:shadow-xl transition">
                 <CardContent className="p-6 text-center">
-                  <feature.icon className="mx-auto h-10 w-10 text-blue-600 mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.description}</p>
+                  <feature.icon className="mx-auto h-10 w-10 text-purple-600 mb-4 drop-shadow-md" />
+                  <h3 className="text-xl font-semibold mb-2 text-gray-900">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-700">{feature.description}</p>
                 </CardContent>
               </Card>
             </motion.div>
