@@ -1,32 +1,31 @@
-"use client"
+"use client";
 
-import Image from 'next/image'
-import React, { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { LayoutDashboard, Menu, X } from 'lucide-react'
-import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
-import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs'
+import Image from "next/image";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { LayoutDashboard, Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const menuList = [
-    { name: 'Home', path: '/' },
-    { name: 'Create Story', path: '/create-story' },
-    { name: 'Explore Stories', path: '/explore' },
-    { name: 'Contact', path: '/contact' },
-  ]
+    { name: "Create Story", path: "/create-story" },
+    { name: "Explore Stories", path: "/explore" },
+    { name: "Contact", path: "/contact" },
+  ];
 
   return (
     <header
@@ -37,14 +36,14 @@ const Header = () => {
           : "bg-gradient-to-r from-[#EEDFFF] via-[#E4CAFF] to-[#DBB5FF] border-purple-200/50"
       )}
     >
-      {/* background glow blobs */}
+      {/* Glow blobs */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-10 -left-10 w-40 h-40 bg-purple-300/20 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-0 w-48 h-48 bg-pink-300/20 rounded-full blur-3xl" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-        {/* Logo + Title */}
+        {/* Logo */}
         <div className="flex items-center gap-3">
           <div className="relative w-12 h-12">
             <Image
@@ -62,34 +61,49 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex gap-1 justify-center flex-1">
           {menuList.map((item) => (
-            <Button
-              key={item.name}
-              variant="ghost"
-              asChild
-              className="group relative text-lg font-medium text-purple-800 hover:text-pink-600 hover:bg-transparent px-4 py-2 rounded-lg transition-all"
-            >
-              <a href={item.path}>
-                {item.name}
-                <motion.span
-                  className="absolute left-0 bottom-1.5 h-0.5 bg-gradient-to-r from-purple-600 to-pink-500"
-                  initial={{ width: 0 }}
-                  whileHover={{ width: "70%" }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                  style={{ originX: 0 }}
-                />
-              </a>
-            </Button>
-          ))}
+  <Button
+    key={item.name}
+    variant="ghost"
+    asChild
+    className="group relative text-lg font-medium text-purple-800 hover:text-pink-600 hover:bg-transparent px-4 py-2 rounded-lg transition-all"
+  >
+    <div>
+      <SignedIn>
+        <Link href={item.path}>
+          {item.name}
+          <motion.span
+            className="absolute left-0 bottom-1.5 h-0.5 bg-gradient-to-r from-purple-600 to-pink-500"
+            initial={{ width: 0 }}
+            whileHover={{ width: "70%" }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            style={{ originX: 0 }}
+          />
+        </Link>
+      </SignedIn>
+      <SignedOut>
+        <Link href="/sign-in">
+          {item.name}
+          <motion.span
+            className="absolute left-0 bottom-1.5 h-0.5 bg-gradient-to-r from-purple-600 to-pink-500"
+            initial={{ width: 0 }}
+            whileHover={{ width: "70%" }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            style={{ originX: 0 }}
+          />
+        </Link>
+      </SignedOut>
+    </div>
+  </Button>
+))}
+
         </nav>
 
-        {/* Desktop Auth */}
         <div className="hidden md:flex gap-2">
           <SignedIn>
             <Link href={"/dashboard"}>
-              <Button variant="default" className="bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md hover:shadow-lg">
+              <Button className="bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md hover:shadow-lg">
                 <LayoutDashboard /> Dashboard
               </Button>
             </Link>
@@ -97,12 +111,14 @@ const Header = () => {
           </SignedIn>
 
           <SignedOut>
-            <SignInButton>
-              <Button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-md hover:shadow-lg">
-                Get Started
-              </Button>
-            </SignInButton>
-          </SignedOut>
+  <Button
+    asChild
+    className="bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-md hover:shadow-lg"
+  >
+    <Link href="/sign-in">Get Started</Link>
+  </Button>
+</SignedOut>
+
         </div>
 
         {/* Mobile Toggle */}
@@ -123,9 +139,9 @@ const Header = () => {
         {isOpen && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
+            animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
             className="bg-gradient-to-r from-[#EEDFFF] via-[#E4CAFF] to-[#DBB5FF] px-6 py-4 md:hidden flex flex-col gap-1 border-t border-purple-100 shadow-lg relative"
           >
             {menuList.map((item) => (
@@ -141,10 +157,10 @@ const Header = () => {
                   className="w-full justify-start text-lg text-purple-800 hover:text-pink-600 hover:bg-transparent py-3 px-4 rounded-lg group relative overflow-hidden"
                   onClick={() => setIsOpen(false)}
                 >
-                  <a href={item.path}>
+                  <Link href={item.path}>
                     {item.name}
                     <span className="absolute left-0 bottom-2.5 h-0.5 bg-gradient-to-r from-purple-600 to-pink-500 w-0 group-hover:w-3/4 transition-all duration-300 ease-out" />
-                  </a>
+                  </Link>
                 </Button>
               </motion.div>
             ))}
@@ -159,18 +175,20 @@ const Header = () => {
               </SignedIn>
 
               <SignedOut>
-                <SignInButton>
-                  <Button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-md hover:shadow-lg">
-                    Get Started
-                  </Button>
-                </SignInButton>
-              </SignedOut>
+  <Button
+    asChild
+    className="bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-md hover:shadow-lg"
+  >
+    <Link href="/sign-in">Get Started</Link>
+  </Button>
+</SignedOut>
+
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
