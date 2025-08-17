@@ -29,7 +29,7 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section className="relative py-20 bg-gradient-to-br from-purple-600 via-pink-600 to-purple-700 overflow-hidden">
+    <section className="relative py-20 bg-gradient-to-br from-purple-200 via-pink-300 to-purple-400 overflow-hidden">
       {/* WOW Glow orbs */}
       <div className="absolute -top-20 -left-20 w-72 h-72 bg-pink-400/40 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-purple-500/40 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
