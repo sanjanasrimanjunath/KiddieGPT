@@ -21,7 +21,7 @@ const steps = [
   },
 ];
 
-export default function HowItWorksSection() {
+export default function HowItWorks() {
   return (
     <header className="fixed w-full top-0 z-50 bg-gradient-to-br from-[#EEDFFF] via-[#E4CAFF] to-[#DBB5FF] shadow-md">
       {/* Decorative WOW blur orbs */}

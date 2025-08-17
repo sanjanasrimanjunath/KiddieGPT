@@ -4,8 +4,8 @@ import Features from "./_components/FeaturesSection";
 import Benefits from "./_components/Benefits";
 import Testimonials from "./_components/Testimonials";
 import CTA from "./_components/CTA";
-import HowItWorks from "./_components/HowitWorks";
 import Footer from "./_components/Footer";
+import HowItWorks from "./_components/HowitWorks";
 
 
 export default function Home() {
