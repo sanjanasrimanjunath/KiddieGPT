@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { LayoutDashboard, Menu, X } from "lucide-react";
+import { LayoutDashboard } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -14,9 +14,7 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -27,6 +25,16 @@ const Header = () => {
     { name: "Contact", path: "/contact" },
   ];
 
+  const itemVariants = {
+    hidden: { opacity: 0, y: -15 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.1, duration: 0.4, ease: "easeOut" },
+    }),
+    exit: { opacity: 0, y: -15, transition: { duration: 0.2 } },
+  };
+
   return (
     <header
       className={cn(
@@ -36,14 +44,7 @@ const Header = () => {
           : "bg-gradient-to-r from-[#EEDFFF] via-[#E4CAFF] to-[#DBB5FF] border-purple-200/50"
       )}
     >
-      {/* Glow blobs */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-10 -left-10 w-40 h-40 bg-purple-300/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-48 h-48 bg-pink-300/20 rounded-full blur-3xl" />
-      </div>
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-        {/* Logo */}
         <div className="flex items-center gap-3">
           <div className="relative w-12 h-12">
             <Image
@@ -63,127 +64,125 @@ const Header = () => {
 
         <nav className="hidden md:flex gap-1 justify-center flex-1">
           {menuList.map((item) => (
-  <Button
-    key={item.name}
-    variant="ghost"
-    asChild
-    className="group relative text-lg font-medium text-purple-800 hover:text-pink-600 hover:bg-transparent px-4 py-2 rounded-lg transition-all"
-  >
-    <div>
-      <SignedIn>
-        <Link href={item.path}>
-          {item.name}
-          <motion.span
-            className="absolute left-0 bottom-1.5 h-0.5 bg-gradient-to-r from-purple-600 to-pink-500"
-            initial={{ width: 0 }}
-            whileHover={{ width: "70%" }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            style={{ originX: 0 }}
-          />
-        </Link>
-      </SignedIn>
-      <SignedOut>
-        <Link href="/sign-in">
-          {item.name}
-          <motion.span
-            className="absolute left-0 bottom-1.5 h-0.5 bg-gradient-to-r from-purple-600 to-pink-500"
-            initial={{ width: 0 }}
-            whileHover={{ width: "70%" }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            style={{ originX: 0 }}
-          />
-        </Link>
-      </SignedOut>
-    </div>
-  </Button>
-))}
-
+            <Button
+              key={item.name}
+              variant="ghost"
+              asChild
+              className="group relative text-lg font-medium text-purple-800 hover:text-pink-600 hover:bg-transparent px-4 py-2 rounded-lg transition-all"
+            >
+              <Link href={item.path}>{item.name}</Link>
+            </Button>
+          ))}
         </nav>
 
         <div className="hidden md:flex gap-2">
           <SignedIn>
             <Link href={"/dashboard"}>
-              <Button className="bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md hover:shadow-lg">
+              <Button className="bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md hover:shadow-lg flex items-center cursor-pointer gap-2">
                 <LayoutDashboard /> Dashboard
               </Button>
             </Link>
             <UserButton />
           </SignedIn>
-
           <SignedOut>
-  <Button
-    asChild
-    className="bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-md hover:shadow-lg"
-  >
-    <Link href="/sign-in">Get Started</Link>
-  </Button>
-</SignedOut>
-
+            <Button
+              asChild
+              className="bg-gradient-to-r from-purple-600 cursor-pointer to-pink-600 text-white shadow-md hover:shadow-lg"
+            >
+              <Link href="/sign-in">Get Started</Link>
+            </Button>
+          </SignedOut>
         </div>
 
-        {/* Mobile Toggle */}
         <div className="md:hidden">
-          <Button
-            variant="ghost"
-            size="icon"
+          <motion.button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-purple-700 hover:bg-purple-100/50"
+            className="relative w-8 h-8 flex flex-col justify-center items-center"
+            animate={isOpen ? "open" : "closed"}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </Button>
+            <motion.span
+              className="absolute w-6 h-0.5 bg-purple-700 rounded"
+              variants={{
+                closed: { rotate: 0, y: -6 },
+                open: { rotate: 45, y: 0 },
+              }}
+              transition={{ duration: 0.3 }}
+            />
+            <motion.span
+              className="absolute w-6 h-0.5 bg-purple-700 rounded"
+              variants={{
+                closed: { opacity: 1, rotate: 0 },
+                open: { opacity: 0 },
+              }}
+              transition={{ duration: 0.3 }}
+            />
+            <motion.span
+              className="absolute w-6 h-0.5 bg-purple-700 rounded"
+              variants={{
+                closed: { rotate: 0, y: 6 },
+                open: { rotate: -45, y: 0 },
+              }}
+              transition={{ duration: 0.3 }}
+            />
+          </motion.button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="bg-gradient-to-r from-[#EEDFFF] via-[#E4CAFF] to-[#DBB5FF] px-6 py-4 md:hidden flex flex-col gap-1 border-t border-purple-100 shadow-lg relative"
+            transition={{ type: "spring", stiffness: 260, damping: 30 }}
+            className="bg-gradient-to-r from-[#EEDFFF] via-[#E4CAFF] to-[#DBB5FF] px-6 py-4 md:hidden flex flex-col gap-3 border-t border-purple-200 shadow-lg"
           >
-            {menuList.map((item) => (
+            {menuList.map((item, i) => (
               <motion.div
                 key={item.name}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full"
+                variants={itemVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                custom={i}
               >
-                <Button
-                  variant="ghost"
-                  asChild
-                  className="w-full justify-start text-lg text-purple-800 hover:text-pink-600 hover:bg-transparent py-3 px-4 rounded-lg group relative overflow-hidden"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <Link href={item.path}>
+                <Link href={item.path}>
+                  <Button
+                    variant="ghost"
+                    className="w-full justify-start text-lg text-purple-800 hover:text-pink-600 hover:bg-transparent py-3"
+                    onClick={() => setIsOpen(false)}
+                  >
                     {item.name}
-                    <span className="absolute left-0 bottom-2.5 h-0.5 bg-gradient-to-r from-purple-600 to-pink-500 w-0 group-hover:w-3/4 transition-all duration-300 ease-out" />
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               </motion.div>
             ))}
-            <div className="flex flex-col gap-3 mt-2 pt-2 border-t border-purple-100">
+
+            <motion.div
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              custom={menuList.length}
+              className="flex flex-col gap-3 pt-2 border-t border-purple-200"
+            >
               <SignedIn>
                 <Link href={"/dashboard"}>
-                  <Button className="bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md hover:shadow-lg">
+                  <Button className="bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md hover:shadow-lg flex items-center gap-2">
                     <LayoutDashboard /> Dashboard
                   </Button>
-                  <UserButton />
                 </Link>
+                <UserButton />
               </SignedIn>
-
               <SignedOut>
-  <Button
-    asChild
-    className="bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-md hover:shadow-lg"
-  >
-    <Link href="/sign-in">Get Started</Link>
-  </Button>
-</SignedOut>
-
-            </div>
+                <Button
+                  asChild
+                  className="bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-md hover:shadow-lg"
+                >
+                  <Link href="/sign-in">Get Started</Link>
+                </Button>
+              </SignedOut>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

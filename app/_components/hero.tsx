@@ -39,7 +39,7 @@ const Hero = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              Create enchanting, personalized stories tailored to your child’s interests—building creativity and a lifelong love of reading.
+              Create enchanting, personalized stories tailored to your child's interest-building creativity and a lifelong love of reading.
             </motion.p>
 
             <motion.div
