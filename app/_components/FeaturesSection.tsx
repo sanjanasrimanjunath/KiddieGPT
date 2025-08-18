@@ -52,7 +52,7 @@ export default function FeaturesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              <Card className="rounded-2xl shadow-lg bg-white/90 backdrop-blur-sm hover:shadow-xl transition">
+              <Card className="rounded-2xl shadow-lg bg-white/90 backdrop-blur-sm hover:shadow-xl transition hover:scale-105 transform duration-300">
                 <CardContent className="p-6 text-center">
                   <feature.icon className="mx-auto h-10 w-10 text-purple-600 mb-4 drop-shadow-md" />
                   <h3 className="text-xl font-semibold mb-2 text-gray-900">
